@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# Audio and generated artifacts
+*.wav
+*.rttm
+*.diarization.txt
+*.segments.csv
+*transcript.txt
+merged_transcript.txt
+
+# Runs and example data
+runs/
+DULfEcPR0Gc/
+Uho2GupZSgU/
+
+# Keep helper scripts
+!ac0Nm71GpOY/*.py

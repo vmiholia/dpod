@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DPOD · The Stream Review</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Libre+Franklin:wght@300;400;600&display=swap');
+
+    :root {
+      --ink: #111111;
+      --crimson: #c1121f;
+      --cream: #fff8f1;
+      --mid-gray: #c4c4c4;
+      --caption: #7a746e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+      padding: 0 18px 4rem;
+    }
+
+    header {
+      max-width: 1200px;
+      margin: 2rem auto 1rem;
+      text-align: center;
+      border-top: 6px double var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 1.5rem 0 0.5rem;
+    }
+
+    .masthead-title {
+      font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      letter-spacing: 0.2em;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .masthead-sub {
+      text-transform: uppercase;
+      letter-spacing: 0.45em;
+      font-size: 0.75rem;
+      margin-top: 0.8rem;
+    }
+
+    nav {
+      margin-top: 1rem;
+      border-top: 1px solid var(--mid-gray);
+      border-bottom: 1px solid var(--mid-gray);
+      padding: 0.6rem 0;
+      display: flex;
+      gap: 1.8rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    nav a:hover {
+      color: var(--crimson);
+    }
+
+    .dateline {
+      text-align: center;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-top: 0.8rem;
+      color: var(--caption);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--mid-gray);
+    }
+
+    .hero img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      border: 1px solid var(--mid-gray);
+    }
+
+    .kicker {
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      margin: 0 0 1rem;
+    }
+
+    .lead-copy {
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .dropcap::first-letter {
+      float: left;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem;
+      line-height: 0.9;
+      padding-right: 12px;
+      color: var(--crimson);
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .cta-row input {
+      flex: 1 0 260px;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--ink);
+      background: transparent;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .cta-row button {
+      border: none;
+      background: var(--ink);
+      color: white;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      padding: 0.95rem 1.5rem;
+      cursor: pointer;
+    }
+
+    .features {
+      margin: 2.5rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border: 1px solid var(--mid-gray);
+    }
+
+    .feature-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      margin: 0.8rem 0 0.4rem;
+    }
+
+    .feature-card .meta {
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--caption);
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      border-top: 1px solid var(--mid-gray);
+      padding-top: 2.5rem;
+    }
+
+    .column article {
+      margin-bottom: 2rem;
+    }
+
+    .column h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .pullquote {
+      border-left: 4px solid var(--crimson);
+      padding-left: 1rem;
+      font-style: italic;
+      color: #4a4540;
+      margin: 1rem 0;
+    }
+
+    .sidebar-block {
+      border-top: 6px solid var(--crimson);
+      padding-top: 1rem;
+    }
+
+    .sidebar-block h4 {
+      letter-spacing: 0.3em;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--crimson);
+    }
+
+    .sidebar-block ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .sidebar-block li {
+      margin: 0.8rem 0;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--mid-gray);
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      .columns {
+        grid-template-columns: 1fr;
+      }
+      .cta-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="masthead-sub">The Stream Review</p>
+    <h1 class="masthead-title">DPOD</h1>
+    <p class="masthead-sub">Voices · Culture · Signal</p>
+    <nav>
+      <a href="#dispatch">Dispatch</a>
+      <a href="#profiles">Profiles</a>
+      <a href="#anthology">Anthology</a>
+      <a href="#about">About</a>
+    </nav>
+    <p class="dateline">Volume 02 · Issue 18 · November 2025</p>
+  </header>
+
+  <main>
+    <section class="hero" id="dispatch">
+      <article>
+        <span class="kicker">Cover Story · Current</span>
+        <h1>When a Two-Hour YouTube Roundtable Becomes a Five-Minute City Conversation.</h1>
+        <p class="lead-copy dropcap">
+          DPOD listens to marathon creator town halls so you don’t have to. The latest capture from “Creators & Capital”
+          distills sprawling commentary into a narrative that reads like a New Yorker feature—complete with diarised
+          speakers, footnotes for policy references, and scenes that move like fiction.
+        </p>
+        <div class="cta-row">
+          <input type="url" placeholder="Paste a YouTube URL to summarise">
+          <button>Summarise</button>
+        </div>
+      </article>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="Studio discussion">
+        <figcaption class="dateline">Still from “Creators &amp; Capital” · Captured by DPOD</figcaption>
+      </figure>
+    </section>
+
+    <section class="features" id="profiles">
+      <article class="feature-card">
+        <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80" alt="Science video">
+        <div class="meta">YouTube Feature · 18m watch · Released Sunday</div>
+        <h2>The Quiet Physics of Viral Rockets</h2>
+        <p>
+          DPOD pulls quotes from “Orbital Obsessions” and surfaces the unscripted debate between the host and a NASA alum.
+        </p>
+      </article>
+      <article class="feature-card">
+        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=900&q=80" alt="music studio">
+        <div class="meta">Creator Portrait · 52m watch</div>
+        <h2>The Producer Who Scored Gen-Z’s Attention Economy</h2>
+        <p>
+          From the channel “Midnight Mixdown.” DPOD threads interviews, timestamps, and diarised reactions into a profile.
+        </p>
+      </article>
+      <article class="feature-card">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80" alt="city documentary">
+        <div class="meta">Documentary Digest · 1h 12m watch</div>
+        <h2>Subways, Sensors, and the Politics of Smart Cities</h2>
+        <p>
+          Summarised from “CityLines Live.” Footnotes cite municipal archives and the YouTube live chat timeline.
+        </p>
+      </article>
+    </section>
+
+    <section class="columns" id="anthology">
+      <div class="column">
+        <article>
+          <h3>“Panel Drift” and the Art of Keeping Track</h3>
+          <p class="meta">YouTube: Tech for Democracy · Runtime 38m · Speakers 5</p>
+          <p>
+            DPOD diarisation tags let you skim to whichever commissioner, activist, or moderator you prefer. Each quote
+            is timestamped and contextualised with our annotation margin notes.
+          </p>
+          <p class="pullquote">
+            “At 14:22 the moderator whispers ‘we’re off-record’—DPOD flags the switch, then resumes the transcript when the
+            cameras heat back up.”
+          </p>
+        </article>
+        <article>
+          <h3>Agenda · Upcoming Captures</h3>
+          <ul>
+            <li>Nov 12 — “Design and Dissent” live salon · YouTube.com/watch?v=x9Urban</li>
+            <li>Nov 15 — “Studio Ledger” with special guest Mitski · YouTube.com/watch?v=softroom</li>
+            <li>Nov 18 — “Policy Playback: AI Hearings” · YouTube.com/watch?v=policyhub</li>
+          </ul>
+        </article>
+      </div>
+      <aside class="column sidebar-block">
+        <h4>Back Issues</h4>
+        <ul>
+          <li>Issue 17 · “The Algorithmic Critic”</li>
+          <li>Issue 16 · “Street Chefs & Streaming Fires”</li>
+          <li>Issue 15 · “Quiet Rooms, Loud Streams”</li>
+        </ul>
+        <h4 style="margin-top:2rem;">Notes from the DPOD Room</h4>
+        <p>
+          Every summary is generated via the dpod.py pipeline: yt-dlp capture, faster-whisper transcription, pyannote diarisation,
+          and merging in one command.
+        </p>
+      </aside>
+    </section>
+  </main>
+
+  <footer id="about">
+    DPOD · Condensing the world’s videos for readers who prefer long-form narrative · editor@dpod.lab
+  </footer>
+</body>
+</html>
